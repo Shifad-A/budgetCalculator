@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spendly</title>
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- tailwindcss -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- favicon -->
+    <link rel="shortcut icon" href="./coins-solid-full.svg" type="image/x-icon">
+</head>
+
+<body>
+    <section class="h-100vh bg-violet-400">
+        <div class="flex justify-center">
+            <div class=" my-15 p-10 rounded-l-lg  bg-white ">
+                <h1 class="font-bold text-4xl text-center text-violet-400">Spendify</h1>
+                <p class="text-center font-semibold pt-5 text-violet-400">Plan today, prosper tomorrow</p>
+                <img class="ms-10 pt-5" src="./asset-allocation.png" width="350px" alt="">
+            </div>
+            <div class=" w-100 my-15 p-10 rounded-r-lg bg-white ">
+                <h1 class="font-bold text-4xl text-center text-violet-400 pb-5">Register</h1>
+                <div>
+                    <label for="userName"
+                        class="block mb-2 text-lg font-light  text-gray-900 dark:text-white">Username</label>
+                    <input type="text" id="userName"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                        placeholder="username" required />
+                </div>
+                <div class="mt-5">
+                    <label for="email"
+                        class="block mb-2 text-lg font-light text-gray-900 dark:text-white">Email</label>
+                    <input type="email" id="email"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                        placeholder="Email" required />
+                </div>
+                <div class="mt-5">
+                    <label for="password"
+                        class="block mb-2 text-lg font-light text-gray-900 dark:text-white">Password</label>
+                    <input type="password" id="password"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                        placeholder="password" required />
+                </div>
+                <div class="flex justify-center">
+                    <button onclick="register()" type="button" class=" text-center hover:text-white border border-violet-400 hover:bg-violet-400 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-5 me-2 mb-2  dark:hover:text-white dark:hover:bg-violet-400">Register</button>
+                </div>
+                <p class="text-center pt-5">Already have an account? <a class="text-blue-600" href="./login.html">Login</a></p>
+                
+
+            </div>
+        </div>
+
+    </section>
+    <script>
+        function register(){
+             let username=document.getElementById("userName").value
+            let password=document.getElementById("password").value
+            let user={
+                usrname:username,
+                pswd:password
+            }
+           
+            
+
+            let users=JSON.parse(localStorage.getItem(username)) 
+
+            if(users){
+                alert("user already exists")
+
+            }else{
+                localStorage.setItem("user",JSON.stringify(user))
+                 alert("registration successful")
+                 window.location.href="./login.html"
+            }
+            
+        }
+    </script>
+</body>
+
+</html>
