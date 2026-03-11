@@ -16,10 +16,10 @@
 </head>
 
 <body>
-    <section class="h-100vh bg-violet-400">
+    <!-- <section class="h-100vh bg-violet-400">
         <div class="flex justify-center">
             <div class=" my-15 p-10 rounded-l-lg  bg-white ">
-                <h1 class="font-bold text-4xl text-center text-violet-400">BudgetWise</h1>
+                <h1 class="font-bold text-4xl text-center text-violet-400">Spendify</h1>
                 <p class="text-center font-semibold pt-5 text-violet-400">Plan today, prosper tomorrow</p>
                 <img class="ms-10 pt-5" src="./asset-allocation.png" width="350px" alt="">
             </div>
@@ -55,7 +55,99 @@
             </div>
         </div>
 
-    </section>
+    </section> -->
+    <section class="min-h-screen bg-violet-400 flex items-center justify-center px-4">
+  <div class="flex flex-col md:flex-row bg-white rounded-lg overflow-hidden">
+
+    <!-- Left Section -->
+    <div class="p-10 flex flex-col items-center justify-center md:w-1/2">
+      <h1 class="font-bold text-4xl text-center text-violet-400">Spendify</h1>
+      <p class="text-center font-semibold pt-5 text-violet-400">
+        Plan today, prosper tomorrow
+      </p>
+
+      <img
+        class="pt-5 w-72 md:w-80"
+        src="./asset-allocation.png"
+        alt=""
+      />
+    </div>
+
+    <!-- Right Section -->
+    <div class="p-10 md:w-1/2">
+      <h1 class="font-bold text-4xl text-center text-violet-400 pb-5">
+        Register
+      </h1>
+
+      <div>
+        <label
+          for="userName"
+          class="block mb-2 text-lg font-light text-gray-900"
+        >
+          Username
+        </label>
+
+        <input
+          type="text"
+          id="userName"
+          class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5"
+          placeholder="username"
+          required
+        />
+      </div>
+
+      <div class="mt-5">
+        <label
+          for="email"
+          class="block mb-2 text-lg font-light text-gray-900"
+        >
+          Email
+        </label>
+
+        <input
+          type="email"
+          id="email"
+          class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5"
+          placeholder="Email"
+          required
+        />
+      </div>
+
+      <div class="mt-5">
+        <label
+          for="password"
+          class="block mb-2 text-lg font-light text-gray-900"
+        >
+          Password
+        </label>
+
+        <input
+          type="password"
+          id="password"
+          class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5"
+          placeholder="password"
+          required
+        />
+      </div>
+
+      <div class="flex justify-center">
+        <button
+          onclick="register()"
+          type="button"
+          class="hover:text-white border border-violet-400 hover:bg-violet-400 font-medium rounded-lg px-5 py-2.5 mt-5"
+        >
+          Register
+        </button>
+      </div>
+
+      <p class="text-center pt-5">
+        Already have an account?
+        <a class="text-blue-600" href="./login.html">Login</a>
+      </p>
+    </div>
+
+  </div>
+</section>
     <script>
         function register(){
              let username=document.getElementById("userName").value

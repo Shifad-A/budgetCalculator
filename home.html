@@ -27,7 +27,7 @@
                     class=" me-5 text-white bg-violet-400 hover:bg-violet-600 focus:ring-4 focus:outline-none focus:ring-violet-200 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-violet-400 dark:hover:bg-violet-600 dark:focus:ring-violet-200">Logout</button>
 
             </div>
-           
+
             <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
                 <ul
                     class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
@@ -47,10 +47,10 @@
     </nav>
     <h3 id="name"></h3>
     <section class="inset-shadow-sm m-10 bg-stone-50">
-        
+
         <div class="p-5 m-10 rounded-lg">
             <h3 class="text-center text-violet-400 text-2xl font-semibold">Add money</h3>
-            <div class="flex justify-center gap-20 p-5 mx-5 ">
+            <div class="flex flex-col md:flex-row justify-center gap-5 mt-5">
 
                 <input type="text" id="income-type"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-75 p-2.5 "
@@ -61,95 +61,99 @@
                 <button type="button" onclick="addIncome()"
                     class=" me-5 text-white bg-violet-400 hover:bg-violet-600 focus:ring-4 focus:outline-none focus:ring-violet-200 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-violet-400 dark:hover:bg-violet-600 dark:focus:ring-violet-200">Add</button>
             </div>
-            <div class="flex mx-30 m-10 gap-3 ">
-                <div class="w-75 flex-1 bg-violet-400 rounded-l-lg ">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mt-10">
+                <div class="bg-violet-400 rounded-lg p-5 text-white">
                     <h3 class="m-5 font-bold">Total income</h3>
                     <p id="total-income" class="text-center m-20 font-bold text-2xl"><span id="totalIncome">0</span>/-
                         Rs</p>
                 </div>
-                <div class="w-25 flex-1 bg-violet-400   ">
+                <div class="bg-violet-400 rounded-lg p-5 text-white">
                     <h3 class="m-5 font-bold">Total expenses</h3>
                     <p class="text-center m-20 font-bold text-2xl"><span id="totalExpense">0</span>/- Rs</p>
                 </div>
-                <div class="w-75 flex-1 bg-violet-400 rounded-r-lg">
+                <div class="bg-violet-400 rounded-lg p-5 text-white">
                     <h3 class="m-5 font-bold">Available Balance</h3>
                     <p class="text-center m-20 font-bold text-2xl"><span id="avlBalance">0</span>/- Rs</p>
                 </div>
             </div>
 
         </div>
-        <div class="flex ms-15">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mt-10">
             <div class="m-15 rounded-lg  p-5">
                 <h3 class="text-center font-semibold text-2xl text-violet-400 pb-5">Expenses</h3>
                 <div class=" ">
 
-                    <div class="pb-5">
-                        <input type="text" id="expense-type"
-                            class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-75 p-2.5 "
-                            placeholder="Expense type" required />
+                    <div>
+                        <input type="text" id="expense-type" class="border border-gray-300 rounded-lg p-2.5 w-full mb-5"
+                            placeholder="Expense type">
                     </div>
-                    <div class="pb-5">
-                        <input type="number" id="expense"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-75 p-2.5"
-                            placeholder="Enter amound" required />
+                    <div>
+                        <input type="number" id="expense" class="border border-gray-300 rounded-lg p-2.5 w-full mb-5"
+                            placeholder="Enter amount">
+
                     </div>
-                    <button type="button" onclick="expense()"
-                        class="mx-30 me-5 text-white bg-violet-400 hover:bg-violet-600 focus:ring-4 focus:outline-none focus:ring-violet-200 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-violet-400 dark:hover:bg-violet-600 dark:focus:ring-violet-200">Add</button>
+                    <button onclick="expense()"
+                        class="w-full text-white bg-violet-400 hover:bg-violet-600 rounded-lg px-4 py-2">
+                        Add
+                    </button>
                 </div>
 
             </div>
-            <div style="width: 700px;height: 500px;overflow-y: scroll; padding: 10px;">
-                <h1 class="text-center font-semibold text-2xl text-violet-400 pb-5">Transaction list</h1>
+            
 
-                <div  id="list" >
-                   
-                    
+                <div id="list" class="max-h-[500px] overflow-y-auto p-2 shadow-lg m-5 rounded-lg ">
+                    <h1 class="text-center font-semibold text-2xl text-violet-400 pb-5">Transaction list</h1>
+
+
                 </div>
-
-            </div>
+            
         </div>
     </section>
-    
+
     <script>
         let TotalIncome = 0
-        var avlBalance=TotalIncome
+        var avlBalance = TotalIncome
+        var totalExpense = 0
+
 
         let today = new Date()
 
-            let day = String(today.getDate())
-            let month = String(today.getMonth() + 1).padStart(2, '0');
-            let year = today.getFullYear();
+        let day = String(today.getDate())
+        let month = String(today.getMonth() + 1).padStart(2, '0');
+        let year = today.getFullYear();
 
-            let hours = String(today.getHours()).padStart(2, '0');
-            let minutes = String(today.getMinutes()).padStart(2, '0');
-            let seconds = String(today.getSeconds()).padStart(2, '0');
-            let session="AM"
-            if (hours >= 12) {
-                session = "PM";
-            }
+        let hours = String(today.getHours()).padStart(2, '0');
+        let minutes = String(today.getMinutes()).padStart(2, '0');
+        let seconds = String(today.getSeconds()).padStart(2, '0');
+        let session = "AM"
+        if (hours >= 12) {
+            session = "PM";
+        }
 
-            if (hours == 0) {
-                hours = 12; // midnight
-            } else if (hours > 12) {
-                hours = hours - 12; // convert to 12-hour format
-            }
-            let time=hours + ":" + minutes + ":" + seconds
-           let formattedDateAndTime= `${day}/${month}/${year}  ${time}`;
-           let users=JSON.parse(localStorage.getItem("user"))
-           document.getElementById('name').innerHTML= ` <h3 id="name" class=" m-10 text-violet-400 text-2xl font-semibold">Welcome ${users.usrname}!</h3>`
+        if (hours == 0) {
+            hours = 12; // midnight
+        } else if (hours > 12) {
+            hours = hours - 12; // convert to 12-hour format
+        }
+        let time = hours + ":" + minutes + ":" + seconds
+        let formattedDateAndTime = `${day}/${month}/${year}  ${time}`;
+        let users = JSON.parse(localStorage.getItem("user"))
+        document.getElementById('name').innerHTML = ` <h3 id="name" class=" m-10 text-violet-400 text-2xl font-semibold">Welcome ${users.usrname}!</h3>`
 
-           
+
         function addIncome() {
             let income = document.getElementById("income").value
-            let incomeType=document.getElementById("income-type").value
+            let incomeType = document.getElementById("income-type").value
             TotalIncome += Number(income)
             document.getElementById("totalIncome").innerHTML = TotalIncome;
-            document.getElementById("avlBalance").innerHTML = TotalIncome;
+            avlBalance = TotalIncome - totalExpense
+            document.getElementById("avlBalance").innerHTML = avlBalance;
 
 
 
-            document.getElementById("list").innerHTML = 
-            `<div class="flex flex-row justify-between">
+
+            document.getElementById("list").innerHTML =
+                `<div class="flex flex-row justify-between">
                  <div>
                         <p class="text-2xl text-violet-400 ">${incomeType}</p>
                     <p class="font-semibold text-violet-400">${formattedDateAndTime}</p>
@@ -159,31 +163,35 @@
                     </div>
                 </div>
                           
-            `+(list.innerHTML || "")
-            container.scrollTop = 0;
-            input.value = "";
-            
+            `+ (list.innerHTML || "")
+            // container.scrollTop = 0;
+            // input.value = "";
+
 
         }
-        let totalExpense = 0
-
 
         function expense() {
             let expense = document.getElementById("expense").value
             let expenseType = document.getElementById("expense-type").value
 
-            avlBalance=TotalIncome-totalExpense
+            console.log(TotalIncome);
+            console.log(avlBalance);
+
+
+
+
+            avlBalance = avlBalance - expense
             document.getElementById("avlBalance").innerHTML = avlBalance;
 
-            if(expense>avlBalance){
+            if (expense > avlBalance) {
                 alert("low balance")
-            }else{
+            } else {
                 totalExpense += Number(expense)
-                 console.log(totalExpense);
+                console.log(totalExpense);
 
-            document.getElementById("totalExpense").innerHTML = totalExpense;
-            
-            document.getElementById("list").innerHTML = `
+                document.getElementById("totalExpense").innerHTML = totalExpense;
+
+                document.getElementById("list").innerHTML = `
               <div class="flex flex-row justify-between">
                     <div>
                         <p class="text-2xl text-violet-400 ">${expenseType}</p>
@@ -195,18 +203,18 @@
                     
                 </div>
             
-            `+(list.innerHTML || "")
-            container.scrollTop = 0;
-            input.value = "";
+            `+ (list.innerHTML || "")
+                // container.scrollTop = 0;
+                // input.value = "";
             }
 
-            
-           
+
+
         }
 
-        function logout(){
+        function logout() {
             localStorage.clear()
-            window.location.href="./index.html"
+            window.location.href = "./index.html"
         }
     </script>
 
